@@ -3,7 +3,9 @@ class CircuitBreaker
     @circuit = block
   end
 
-  def act
+  def execute
     @circuit.call
+  rescue Timeout::Error
+    'Timeout Error'
   end
 end
